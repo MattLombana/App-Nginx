@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    hostname: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # - ../Config/load-balancer.conf:/etc/nginx/nginx.conf
+      - ../Config/reverse-proxy.conf:/etc/nginx/nginx.conf
+      - ../Data/nginx:/etc/ssl/private
